@@ -3,7 +3,7 @@ import Container from "@/components/shared/Container";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#071a2f] text-white">
+    <footer className="bg-[#071a2f] text-white px-6">
       <Container className="py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand and address */}

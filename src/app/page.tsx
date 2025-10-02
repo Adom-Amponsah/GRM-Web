@@ -10,7 +10,7 @@ import AssociatedMinistriesSection from "@/components/home/AssociatedMinistriesS
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <HeroVideoSection />
       <AboutUsSection />
       <OneChurchManyHomesSection />

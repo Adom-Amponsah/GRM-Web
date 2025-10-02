@@ -1,4 +1,6 @@
+'use client'
 import React from "react";
+import { motion, Variants } from "framer-motion";
 import Section from "@/components/shared/Section";
 import Container from "@/components/shared/Container";
 
@@ -65,25 +67,84 @@ export default function MediaAccessSection() {
       ),
     },
   ];
+
+  // Animation variants
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const headingVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <Section className="bg-white">
+    <Section className="bg-white px-2">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left: heading and subtext */}
-          <div>
-            <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black">LISTEN TO THE LIFE-GIVING WORD</h3>
-            <p className="mt-3  max-w-prose text-black">
-              Follow the messages and content of God’s servant, Rev. Robert Ampiah-Kwofi on any of these platforms.
-            </p>
-          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+          >
+            <motion.h3
+              className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black"
+              variants={headingVariants}
+            >
+              LISTEN TO THE LIFE-GIVING WORD
+            </motion.h3>
+            <motion.p
+              className="mt-3 max-w-prose text-black"
+              variants={headingVariants}
+            >
+              Follow the messages and content of God's servant, Rev. Robert Ampiah-Kwofi on any of these platforms.
+            </motion.p>
+          </motion.div>
 
           {/* Right: platform cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+          >
             {platforms.map(({ name, handle, color, Icon }) => (
-              <a
+              <motion.a
                 key={name}
                 href="#"
                 className="rounded-2xl bg-white border border-black/10 p-4 shadow-md hover:shadow-lg transition flex items-center gap-3"
+                variants={cardVariants}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div
                   className="size-9 flex items-center justify-center rounded-full text-white"
@@ -95,9 +156,9 @@ export default function MediaAccessSection() {
                   <div className="font-semibold text-sm text-black">{name}</div>
                   <div className="text-xs text-gray-600">{handle}</div>
                 </div>
-              </a>
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
       </Container>
     </Section>

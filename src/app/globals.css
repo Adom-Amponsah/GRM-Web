@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Prevent horizontal overflow on mobile (right-side gap/scroll) */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin:0;
+  padding:0;
+}

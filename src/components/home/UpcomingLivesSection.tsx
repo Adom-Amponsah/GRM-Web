@@ -11,7 +11,7 @@ export default function UpcomingLivesSection() {
     { title: "Special Service" },
   ];
   return (
-    <Section>
+    <Section className="px-2">
       <Container>
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-bold">Upcoming Lives</h3>
